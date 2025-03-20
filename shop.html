@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Expresso Yourself</title>
+   
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FFEDFA;
+            color: #333;
+        }
+
+        h1, h2, h3 {
+            color: #BE5985;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #EC7FA9;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar h1 {
+            margin: 0;
+            color: white;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            padding: 0;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            color: #FFB8E0;
+        }
+
+        .shop-hero {
+            text-align: center;
+            padding: 1px 20px;
+            background: url('all.webp') center/cover no-repeat;
+            color: #BE5985;
+            font-size: 2.5rem;
+        }
+
+        .shop-hero p {
+            font-size: 1.2rem;
+            margin-top: 400px;
+            color: #ffffff;
+        }
+
+        /* Product Grid */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 40px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .grid-item {
+            background: #FFB8E0;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .grid-item:hover {
+            transform: scale(1.05);
+        }
+
+        .grid-item img {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            max-height: 250px;
+            object-fit: cover;
+        }
+
+        button {
+            background-color: #BE5985;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 8px;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #EC7FA9;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #EC7FA9;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <div class="navbar">
+            <h1>Expresso Yourself</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html" class="active">Shop</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Shop Hero Section -->
+    <section class="shop-hero">
+        
+        <p>Explore our wide range of coffee and snacks.</p>
+    </section>
+
+    <!-- Products -->
+    <section class="grid-container">
+        <article class="grid-item">
+            <img src="Latte.png" alt="Coffee Latte">
+            <h3>Coffee Latte</h3>
+            <p>₱ 200.00</p>
+            <button>Add to Cart</button>
+        </article>
+
+        <article class="grid-item">
+            <img src="Capo.png" alt="Caramel Macchiato">
+            <h3>Caramel Macchiato</h3>
+            <p>₱ 200.00</p>
+            <button>Add to Cart</button>
+        </article>
+
+        <article class="grid-item">
+            <img src="huhu.png" alt="Mocha">
+            <h3>Mocha</h3>
+            <p>₱ 159.00</p>
+            <button>Add to Cart</button>
+        </article>
+
+        <article class="grid-item">
+            <img src="cruso.png" alt="Chocolate Croissant">
+            <h3>Chocolate Croissant</h3>
+            <p>₱ 99.00</p>
+            <button>Add to Cart</button>
+        </article>
+
+        <article class="grid-item">
+            <img src="mafin.png" alt="Blueberry Muffin">
+            <h3>Blueberry Muffin</h3>
+            <p>₱ 99.00</p>
+            <button>Add to Cart</button>
+        </article>
+
+        <article class="grid-item">
+            <img src="cuki.png" alt="Cookies">
+            <h3>Cookies</h3>
+            <p>₱ 99.00</p>
+            <button>Add to Cart</button>
+        </article>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Expresso Yourself. All Rights Reserved.</p>
+    </footer>
+    <script>
+        let cart = [];
+        
+        function addToCart(name, price) {
+            cart.push({ name: name, price: price });
+            alert(name + " has been added to cart!");
+            updateCartTotal();
+        }
+    
+        function updateCartTotal() {
+            let total = 0;
+            cart.forEach(item => {
+                total += item.price;
+            });
+            document.getElementById("cart-total").innerText = "Total: ₱ " + total.toFixed(2);
+        }
+    </script>
+    
+</body>
+</html>
